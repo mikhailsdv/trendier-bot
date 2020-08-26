@@ -1,0 +1,6 @@
+{
+    "require": {
+        "x-fran/g-trends": "^2.2",
+        "catfan/medoo": "^1.7"
+    }
+}
