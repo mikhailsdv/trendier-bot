@@ -49,7 +49,7 @@
 				$past = time() - strtotime($user_prev_messages[0]["date"]);
 				if ($past < $once_per) {
 					tgapi("sendMessage", [
-						"text" => "ℹ Чтобы Google не банил IP нашего сервера, мы ограничиваем частоту запросов от пользователей. Вы можете сделать следующий запрос через " . ($once_per - $past) . " " . pluralize($times, "секунду", "секунды", "секунд") . ".",
+						"text" => "ℹ Чтобы Google не банил IP нашего сервера, мы ограничиваем частоту запросов от пользователей. Вы можете сделать следующий запрос через " . ($once_per - $past) . " " . pluralize(($once_per - $past), "секунду", "секунды", "секунд") . ".",
 						"chat_id" => $input["message"]["chat"]["id"]
 					]);
 					exit;

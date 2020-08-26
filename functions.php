@@ -69,7 +69,15 @@
 		]);
 		$answer = preg_replace("/%word1/", $word1, $answer);
 		$answer = preg_replace("/%word2/", $word2, $answer);
-		$answer = $times > 1 ? preg_replace("/%times/", is_infinite($times) ? "в бесконечное количесво раз" : "в $times " . pluralize($times, "раз", "раза", "раз"), $answer) : preg_replace("/\s%times/", "", $answer);
+		if (is_infinite($times)) {
+			$answer = preg_replace("/%times/", "в бесконечное количесво раз", $answer);
+		}
+		else if ($times > 1) {
+			$answer = preg_replace("/%times/", "в $times " . pluralize($times, "раз", "раза", "раз"), $answer);
+		}
+		else {
+			$answer = preg_replace("/%times/", arr_rand(["чуточку", "немного"]), $answer);
+		}
 		return $answer;
 	}
 
@@ -88,7 +96,15 @@
 		]);
 		$answer = preg_replace("/%word1/", $word1, $answer);
 		$answer = preg_replace("/%word2/", $word2, $answer);
-		$answer = $times > 1 ? preg_replace("/%times/", is_infinite($times) ? "в бесконечное количесво раз" : "в $times " . pluralize($times, "раз", "раза", "раз"), $answer) : preg_replace("/\s%times/", "", $answer);
+		if (is_infinite($times)) {
+			$answer = preg_replace("/%times/", "в бесконечное количесво раз", $answer);
+		}
+		else if ($times > 1) {
+			$answer = preg_replace("/%times/", "в $times " . pluralize($times, "раз", "раза", "раз"), $answer);
+		}
+		else {
+			$answer = preg_replace("/%times/", arr_rand(["чуточку", "немного"]), $answer);
+		}
 		return $answer;
 	}
 
