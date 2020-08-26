@@ -3,9 +3,9 @@ Alice skill + Telegram-bot that shows which of two words is more popular acordin
 
 Links
 ----
-[Bot itself](https://t.me/TrendierBot)
-[Author's chanel](https://t.me/FilteredInternet)
-[Author DM](https://t.me/mikhailsdv)
+1. [Bot itself](https://t.me/TrendierBot)
+2. [Author's chanel](https://t.me/FilteredInternet)
+3. [Author DM](https://t.me/mikhailsdv)
 
 Usage
 ---
