@@ -32,13 +32,8 @@
 		});
 		$times = round($words[0]["popularity"] / $words[1]["popularity"]);
 		$answer = get_random_answer($words[0]["word"], $words[1]["word"], $times);
-
-		/*tgapi("sendMessage", [
-			"text" => json_encode(),
-			"chat_id" => 573560893
-		]);*/
 		
-		/*$database = new Medoo\Medoo([
+		$database = new Medoo\Medoo([
 			"database_type" => "mysql",
 			"database_name" => MYSQLI_DB,
 			"server" => MYSQLI_HOST,
@@ -53,7 +48,7 @@
 			"word2" => $words[1]["word"],
 			"command" => $command,
 			"answer" => $answer
-		]);*/
+		]);
 
 		alice_response([
 			"text" => $answer,

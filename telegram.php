@@ -14,7 +14,6 @@
 			"action" => "typing",
 			"chat_id" => $input["message"]["chat"]["id"]
 		]);
-		//if (preg_match("/^.*(что|кто) популярне(е|й):? (.+) или (.+)\??$/i", $input["message"]["text"], $matches)) {
 		if (preg_match("/^(.+) или (.+)$/", $input["message"]["text"], $matches)) {
 			if (mb_strtolower($matches[1]) === mb_strtolower($matches[2])) {
 				tgapi("sendMessage", [
