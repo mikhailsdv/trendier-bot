@@ -6,7 +6,7 @@
 	$input = json_decode(file_get_contents("php://input"), true);
 	$command = $input["request"]["command"];
 
-	if (preg_match("/^.*(что|кто) популярне(е|й):? (.+) или (.+)\??$/i", $command, $matches)) {
+	if (preg_match("/^.*(что|кто) популярне(е|й)\s?:?-? (.+) или (.+)\??$/i", $command, $matches)) {
 		$words_pure = [$matches[3], $matches[4]];
 		$words = array_map(function($item) {
 			return [
@@ -22,6 +22,19 @@
 		];
 		$gt = new Google\GTrends($options);
 		$result = $gt->interestOverTime($words_pure);
+
+		if (!$result) {
+			alice_response([
+				"text" => arr_rand([
+					"К сожалению, сейчас я не могу дать ответ на ваш вопрос. Мои серверы перегружены. Попробуйте завтра.",
+					"Не могу могу обработать запрос. Кажется, у нас какие-то неполадки. Попроуйте позже.",
+					"Извините, но из-за технических неполадок я временно не могу дать ответ на ваш вопрос. Попробуйте завтра.",
+				]),
+				"end_session" => true,
+			]);
+			exit;
+		}
+
 		foreach ($result as $key => $value) {
 			foreach ($value["value"] as $wordKey => $wordPopularity) {
 				$words[$wordKey]["popularity"] += $wordPopularity;
@@ -33,7 +46,7 @@
 		$times = round($words[0]["popularity"] / $words[1]["popularity"]);
 		$answer = get_random_answer($words[0]["word"], $words[1]["word"], $times);
 		
-		$database = new Medoo\Medoo([
+		/*$database = new Medoo\Medoo([
 			"database_type" => "mysql",
 			"database_name" => MYSQLI_DB,
 			"server" => MYSQLI_HOST,
@@ -48,7 +61,7 @@
 			"word2" => $words[1]["word"],
 			"command" => $command,
 			"answer" => $answer
-		]);
+		]);*/
 
 		alice_response([
 			"text" => $answer,
