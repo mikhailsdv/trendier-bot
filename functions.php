@@ -19,7 +19,7 @@
 		$body = [
 			"response" => [
 				"text" => $response["text"],
-				//"tts" =>  "Здравствуйте! Это мы, хоров+одо в+еды.",
+				//"tts" => isset($response["tts"]) ? $response["tts"] : $response["text"],
 				/*"buttons" =>  [
 					[
 						"title" =>  "Надпись на кнопке",
@@ -32,9 +32,6 @@
 			],
 			"version" => "1.0"
 		];
-		if ($response["tts"] && is_string($response["tts"]) && !empty($response["tts"])) {
-			$body["response"]["tts"] = $response["tts"];
-		}
 		echo json_encode($body);
 		exit;
 	}
@@ -52,60 +49,6 @@
 			return $word2;
 		}
 		return $word3;
-	}
-
-	function get_random_answer($word1, $word2, $times) {
-		$answer = arr_rand([
-			"%word1 популярнее",
-			"%word1 однозначно популярнее",
-			"Я проверила: %word1 %times популярнее, чем %word2",
-			"По моим источникам %word1 %times популярнее, чем %word2",
-			"Смело заявляю, что %word1 %times популярнее, чем %word2",
-			"За последний год %word1 популярнее, чем %word2",
-			"Насколько я знаю, %word1 %times популярнее, чем %word2",
-			"Мне хорошо известно, что %word1 %times популярнее, чем %word2",
-			"Я знаю наверняка, что %word1 %times популярнее, чем %word2",
-			"Как оказалось, %word1 %times популярнее, чем %word2",
-		]);
-		$answer = preg_replace("/%word1/", $word1, $answer);
-		$answer = preg_replace("/%word2/", $word2, $answer);
-		if (is_infinite($times)) {
-			$answer = preg_replace("/%times/", "в бесконечное количесво раз", $answer);
-		}
-		else if ($times > 1) {
-			$answer = preg_replace("/%times/", "в $times " . pluralize($times, "раз", "раза", "раз"), $answer);
-		}
-		else {
-			$answer = preg_replace("/%times/", arr_rand(["чуточку", "немного"]), $answer);
-		}
-		return $answer;
-	}
-
-	function get_tg_random_answer($word1, $word2, $times) {
-		$answer = arr_rand([
-			"%word1 популярнее",
-			"%word1 однозначно популярнее",
-			"Я проверил: %word1 %times популярнее, чем %word2",
-			"По моим источникам %word1 %times популярнее, чем %word2",
-			"Смело заявляю, что %word1 %times популярнее, чем %word2",
-			"За последний год %word1 популярнее, чем %word2",
-			"Насколько я знаю, %word1 %times популярнее, чем %word2",
-			"Мне хорошо известно, что %word1 %times популярнее, чем %word2",
-			"Я знаю наверняка, что %word1 %times популярнее, чем %word2",
-			"Как оказалось, %word1 %times популярнее, чем %word2",
-		]);
-		$answer = preg_replace("/%word1/", $word1, $answer);
-		$answer = preg_replace("/%word2/", $word2, $answer);
-		if (is_infinite($times)) {
-			$answer = preg_replace("/%times/", "в бесконечное количесво раз", $answer);
-		}
-		else if ($times > 1) {
-			$answer = preg_replace("/%times/", "в $times " . pluralize($times, "раз", "раза", "раз"), $answer);
-		}
-		else {
-			$answer = preg_replace("/%times/", arr_rand(["чуточку", "немного"]), $answer);
-		}
-		return $answer;
 	}
 
 	function arr_rand($arr) {

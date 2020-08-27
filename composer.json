@@ -1,6 +1,7 @@
 {
     "require": {
         "x-fran/g-trends": "^2.2",
-        "catfan/medoo": "^1.7"
+        "catfan/medoo": "^1.7",
+        "kwn/number-to-words": "^1.11"
     }
 }
