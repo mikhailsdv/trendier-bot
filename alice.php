@@ -115,7 +115,7 @@
 		$answer = preg_replace("/%word1/", $words[0]["word"], $answer);
 		$answer = preg_replace("/%word2/", $words[1]["word"], $answer);
 		if (is_infinite($times)) {
-			$tts = $answer = preg_replace("/%times/", "в бесконечное количесво раз", $answer);
+			$tts = $answer = preg_replace("/%times/", "в бесконечное количество раз", $answer);
 		}
 		else if ($times > 1) {
 			$num_to_words = $numberTransformer->toWords($times);

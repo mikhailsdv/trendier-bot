@@ -116,7 +116,7 @@
 			$answer = preg_replace("/%word1/", $words[0]["word"], $answer);
 			$answer = preg_replace("/%word2/", $words[1]["word"], $answer);
 			if (is_infinite($times)) {
-				$answer = preg_replace("/%times/", "в бесконечное количесво раз", $answer);
+				$answer = preg_replace("/%times/", "в бесконечное количество раз", $answer);
 			}
 			else if ($times > 1) {
 				$answer = preg_replace("/%times/", "в $times " . pluralize($times, "раз", "раза", "раз"), $answer);
