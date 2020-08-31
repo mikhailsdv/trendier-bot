@@ -5,7 +5,6 @@ Links
 ----
 1. [Bot itself](https://t.me/TrendierBot)
 2. [Author's chanel](https://t.me/FilteredInternet)
-3. [Author DM](https://t.me/mikhailsdv)
 
 Usage
 ---

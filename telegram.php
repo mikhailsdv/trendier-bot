@@ -46,7 +46,7 @@
 			]);
 
 			if (count($user_prev_messages) === 1) {
-				$once_per = 15;
+				$once_per = 8;
 				$past = time() - strtotime($user_prev_messages[0]["date"]);
 				if ($past < $once_per) {
 					tgapi("sendMessage", [
