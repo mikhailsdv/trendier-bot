@@ -46,7 +46,7 @@
 			]);
 
 			if (count($user_prev_messages) === 1) {
-				$once_per = 8;
+				$once_per = 6;
 				$past = time() - strtotime($user_prev_messages[0]["date"]);
 				if ($past < $once_per) {
 					tgapi("sendMessage", [
@@ -100,7 +100,7 @@
 			usort($words, function($a, $b) {
 				return $b["popularity"] - $a["popularity"];
 			});
-			$times = round($words[0]["popularity"] / $words[1]["popularity"]);
+			$times = $words[1]["popularity"] === 0 ? INF : round($words[0]["popularity"] / $words[1]["popularity"]);
 			$answer = arr_rand([
 				"%word1 однозначно популярнее",
 				"Я проверил: %word1 %times популярнее, чем %word2",
