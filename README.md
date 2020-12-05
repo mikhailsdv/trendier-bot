@@ -1,5 +1,5 @@
 # trendier-bot
-Alice skill + Telegram-bot that shows which of two words is more popular acording to the Google Trends data.
+Alice skill + Telegram-bot that shows which of two words is more popular according to the Google Trends data.
 
 Links
 ----
