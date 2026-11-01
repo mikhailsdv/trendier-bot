@@ -1,0 +1,5 @@
+# Only the webhooks are public: .env and src/ must not be reachable from the web.
+Require all denied
+<FilesMatch "^(telegram|alice)\.php$">
+    Require all granted
+</FilesMatch>
